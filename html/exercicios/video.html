@@ -1,0 +1,72 @@
+<video id="meuVideo" width="800" height="450" controls autoplay controlsList="nodownload">
+    <source src="http://files.cod3r.com.br/curso-web/video.mp4" type="video/mp4">
+    Seu browser não suporta a tag de video.
+
+    <!-- A tag source é sempre muito útil pq sempre que o seu video - por algum motivo -
+    não carregar, o código abaixo será executado. É mais 'seguro' do que usar 'src' direto. -->
+</video>
+
+<!-- o atributo de video 'controls' serve para mostrar botões de play,pause,progressbar,
+download entre outras funcionalidades padrão -->
+
+<!-- o atributo 'autoplay' serve para dar play instaneamente qnd o usuario entrar na pag -->
+
+<!-- o atributo 'controlsList="nodownload"' serve para bloquear a opção de download do usuario -->
+
+<div wm-progresso="meuVideo" class="progresso">
+    <div></div>
+</div>
+
+<!-- a div exterior é o tamnho da barra de progresso e a inferior a barra crescente em si -->
+
+<div>
+    <button wm-play="meuVideo" onclick="playVideo()">play</button>
+    <button wm-pause="meuVideo" onclick="pauseVideo()">Pause</button>
+</div>
+
+<style>
+    .progresso {
+        height: 20px;
+        border: 1px black solid;
+        width: 500px;
+        margin: 20px;
+    }
+
+    .progresso > div {
+        background-color: red;
+        color: white;
+        height: 100%;
+        text-align: right;
+        font-size: 14px;
+        width: 0%;
+    }
+</style>
+
+<script>
+    const video = document.getElementById('meuVideo')
+    const progress = document.querySelector(`[wm-progresso] > div`)
+
+    function playVideo() {
+        video.play()
+        atualizarProgresso()
+        console.log(!video.paused)
+    }
+
+    function pauseVideo() {
+        video.pause()
+        console.log(video.paused)
+    }
+
+    function atualizarProgresso() {
+        console.log('aq')
+        setInterval(() => {
+            const vermelho = (video.currentTime/video.duration) * 100
+            progress.style.width = `${vermelho}%`
+            progress.innerHTML = `${vermelho.toFixed(1)}%`
+            console.log(vermelho)
+        }, 500)
+    }
+    /* Em resumo: duas funções básicas de pause play, padrão. Além disso, uma função que é instanciada após clicar no play
+    e que é um progress bar, para fazer isso a função set interval, a cada 0.5sec, calcula a progressão do video baseado
+    na conta da linha 63 e editando o css de uma div a partir do 'progress.innetHTML'. */
+</script>

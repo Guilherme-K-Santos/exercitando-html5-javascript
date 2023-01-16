@@ -1,0 +1,55 @@
+<h1>Projeto</h1>
+<!-- Lista aninhada = listas de listas -->
+
+<ul class="tree">
+    <li>
+        <span class="pasta">Backend</span>
+        <ul>
+            <li>
+                <span class="pasta">app</span>
+                <ul>
+                    <li>produto.js</li>
+                    <li>usuario.js</li>
+                    <li>venda.js</li>
+                </ul>
+            </li>
+            <li>
+                <span class="pasta">config</span>
+                <ul>
+                    <li>banco.js</li>
+                    <li>rotas.js</li>
+                    <li>servidor.js</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <span class="pasta">frontend</span>
+        <ul>
+            <li>
+                <span class="pasta">public</span>
+                <ul>
+                    <li>app.css</li>
+                    <li>app.js</li>
+                    <li>index.html</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<link rel="stylesheet" href="http://files.cod3r.com.br/curso-web/tree.css">
+
+<script>
+    document.querySelectorAll('.pasta').forEach((clica) => {
+        clica.onclick = (pasta) => {
+            const prox = clica.nextElementSibling
+            const copia = prox.style.display
+            prox.style.display = copia === 'none' ? 'block' : 'none'
+    }})
+    
+    /* o que está acontecendo aqui: pegue todos os elementos que tenha a classe pasta, quando
+    eles forem clicados, ativa uma função que testa se o próximo elemento é vazio, caso não for
+    ele será igualado a nulo (vai retrair). Se ele ele for vazio, ao clicar ele mostrara o
+    conteúdo. */
+</script>

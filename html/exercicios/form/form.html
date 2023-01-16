@@ -1,0 +1,61 @@
+<h1>Formulário</h1>
+
+<form action="" method="post">
+    <input type="hidden" name="id" value="3">
+    <!-- Não aparece na tela, serve para carregar um valor que o usuário n ve. -->
+    <input type="text" name="nome">
+    <input type="password" name="senha">
+    <textarea name="bio" id="" cols="30" rows="10"></textarea>
+    <div>
+        <input type="radio" name="tipo" value="admin"> Admin
+        <input type="radio" name="tipo" value="Regular"> Regular
+        <input type="radio" name="tipo" value="professor"> Professor
+    </div>
+    <!-- Dentro dessa div existem várias oções para serem selecionadas pelo usuário,
+    para o backend, o objeto criado terá a chave tipo com o valor especifico de cada
+    'value' ali -->
+
+    <div>
+        <input type="checkbox" name="ativo">Ativo
+    </div>
+    <!-- No caso de checkbox, a chave 'ativo' receberá o valor 'on',
+    caso esteja pressionada e nada (literalmente) caso contrário. -->
+
+    <select name="estado">
+        <option value="ac">Acre</option>
+        <option value="ba">Bahia</option>
+        <option value="sp">São Paulo</option>
+        <option value="sc">Santa Catarina</option>
+        <option value="pr">Paraná</option>
+    </select>
+    <!-- No backend o 'name' do select será a chave e o value de uma das
+    opções será o seu valor, já que esse select é único. -->
+
+    <select name="interesses" multiple size="5">
+        <option value="rock">Rock</option>
+        <option value="pop">Pop</option>
+        <option value="rap">Rap</option>
+        <option value="mbp">Mbp</option>
+        <option value="anime">Anime</option>
+    </select>
+    <!-- Aqui o select atráves do atributo multiplo detecta que pode-se 
+    selecionar mais de uma opção (tb pode passar um limite de tamanho para elas)
+    No backend isso é transcrito com a chave sendo o name do selection e o valor sendo uma
+    lista com os 'value' dos selecionados. -->
+
+    <button formaction="http://localhost:3030/usuarios">Incluir</button>
+    <button formaction="http://localhost:3030/usuarios/3">Alterar</button>
+    <!-- Esses botões traçam um link especifico para o qual o usuario será redirecionado
+    após o click. -->
+</form>
+
+<style>
+    input, textarea {
+        display: block;
+        margin-bottom: 10px
+    }
+
+    input[type=radio], input[type=checkbox] {
+        display: inline;
+    }
+</style>
